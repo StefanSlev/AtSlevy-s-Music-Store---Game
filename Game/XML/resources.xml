@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+	<images>
+		<image id="note1" entry="multiple" width="50" height="50">./Resources/Images/note1.png</image>
+		<image id="note2" entry="multiple" width="50" height="50">./Resources/Images/note2.png</image>
+		<image id="note3" entry="multiple" width="50" height="50">./Resources/Images/note3.png</image>
+		<image id="guitar" width="250" height="200" entry="multiple">./Resources/Images/guitar.png</image>
+		<image id="drums" width="325" height="260" entry="multiple">./Resources/Images/drums.png</image>
+		<image id="piano" width="150" height="100" entry="multiple">./Resources/Images/piano.png</image>
+		<image id="person" width="200" height="350" entry="single">./Resources/Images/person.png</image>
+	</images>
+	<settings>
+		<canvasSize>
+			<standard>
+				<width>1000</width>
+				<height>600</height>
+			</standard>
+			<minimum>
+				<width>800</width>
+				<height>480</height>
+			</minimum>
+		</canvasSize>
+		<level>easy</level>
+		<probabilities>
+			<happy>0.5</happy>
+			<sad>0.25</sad>
+			<straight>0.25</straight>
+			<celebrity>0.5</celebrity>
+		</probabilities>
+		<timing>
+			<guitarStreet>6000</guitarStreet>
+			<pianoStreet>8000</pianoStreet>
+			<drumsStreet>10000</drumsStreet>
+			<note>300</note>
+			<animation>5000</animation>
+		</timing>
+		<fame>10</fame>
+		<settingsPage>
+			<div class="row title">
+				Settings
+			</div>
+			<div class="row settings">
+				<div class="col-6">
+					<!--First column -->
+					<fieldset id="level">
+						<legend> Level </legend>
+						<div>
+							<input id="easy" type="radio" name="level" value="easy" onchange="changeLevel(this)"/>
+							<label for="easy"> Easy game </label>
+						</div>
+						<div>
+							<input id="normal" type="radio" name="level" value="normal" onchange="changeLevel(this)"/>
+							<label for="normal"> Normal game </label>
+						</div>
+						<div>
+							<input id="hard" type="radio" name="level" value="hard" onchange="changeLevel(this)"/>
+							<label for="hard"> Hard game </label>
+						</div>
+					</fieldset>
+
+					<fieldset id="celeb">
+						<legend> Celebrity </legend>
+						<div>
+							<input id="celebrity" name="celebrity" type="checkbox" onchange="showRange(this)"/>
+							<label for="celebrity"> On/Off </label>
+						</div>
+						<div class="hidden">
+							<input type="range" name="celebrityRange" min="0" max="100" value="0" onchange="rangeChange(this)"/>
+							<p> Probability: 0%</p>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend> Cheat code </legend>
+						<div class="row">
+							<div class="col-6">
+								<input type="text" name="singlecheat" maxlength="30" placeholder="Enter cheat code"/>
+								<button class="cheatBtn" onclick="singleCheat()"> Submit </button>
+							</div>
+							<div class="col-6">
+								<p id="singleCheatRes"></p>
+							</div>
+						</div>
+					</fieldset>		
+				</div>
+				<div class="col-6">
+					<!-- Second column -->
+					<fieldset id="timing">
+						<legend> Timing </legend>
+						<div class="row">
+							<select name="timing" class="col-6" multiple="multiple" onchange="timingSelectChange(this)">
+								<option value="guitar" selected="selected"> Guitar Street Time </option>
+								<option value="drums"> Drums Street Time </option>
+								<option value="piano"> Piano Street Time </option>
+							</select>
+							<div class="col-6">
+								<input type="range" name="timingRange" min="2000" max="10000" value="1000" onchange="timingRangeChange(this)"/>
+								<p> Spawn Time: 1000ms</p>
+							</div>
+						</div>
+					</fieldset>
+
+					<fieldset id="prob">
+						<legend> Probabilities </legend>
+						<select name="happiness" onchange="happSelectChange(this)">
+							<option value="happy" selected="selected"> Happy probability </option>
+							<option value="sad"> Sad probability </option>
+							<option value="straight"> Straight probability </option>
+						</select>
+						<div>
+							<input type="range" name="happyProb" min="0" max="100" value="0" onchange="rangeChange(this)"/>
+							<p> Probability: 0%</p>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend> Multiple cheat codes </legend>
+						<div class="row">
+							<div class="col-6">
+								<textarea name="multiplecheat">
+
+								</textarea>
+							</div>
+							<div class="col-6">
+								<button class="cheatBtn"  onclick="multipleCheat()"> Submit </button>
+								<p id="multipleCheatRes"></p>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+			<div class="row submit helper">
+				<button onclick="submitChanges()"> Submit settings </button>
+			</div>
+		</settingsPage>
+	</settings>
+</resources>
